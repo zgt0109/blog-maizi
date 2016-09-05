@@ -6,13 +6,18 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'posts#index'
 
-  get  '/sign_up', to: 'users#new'
-  post '/sign_up', to: 'users#create'
+  namespace :admin do
+    get  '/sign_up', to: 'users#new'
+    post '/sign_up', to: 'users#create'
 
-  get :sign_in, to: 'sessions#new'
-  post :sign_in, to: 'sessions#create'
+    get :sign_in, to: 'sessions#new'
+    post :sign_in, to: 'sessions#create'
 
-  get :sign_out, to: 'sessions#destroy'
+    get :sign_out, to: 'sessions#destroy'
+
+    resources :posts
+    root to: 'posts#index'
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

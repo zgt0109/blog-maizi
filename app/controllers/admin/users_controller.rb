@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Admin::UsersController < Admin::BaseController
 	skip_before_filter :authenticate, only: [:new, :create]
 	
 	def new
