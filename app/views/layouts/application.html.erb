@@ -43,6 +43,12 @@
           	<!-- <a class="blog-nav-item" href="#"><%= c.name %></a> -->
           <% end %>
           <a class="blog-nav-item" href="#">About</a>
+          <% if sign_in? %>
+          	<%= link_to("Sign Out", sign_out_path, class: "blog-nav-item pull-right") %>
+          <% else %>
+          	<%= link_to("Sign Up", sign_up_path, class: "blog-nav-item pull-right") %>
+          <% end %>
+          
         </nav>
       </div>
     </div>
