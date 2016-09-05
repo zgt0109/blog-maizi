@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905132429) do
+ActiveRecord::Schema.define(version: 20160905140356) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", limit: 255
+  end
+
+  create_table "categories_posts", id: false, force: :cascade do |t|
+    t.integer "category_id", limit: 4, null: false
+    t.integer "post_id",     limit: 4, null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title",        limit: 255
@@ -20,6 +29,7 @@ ActiveRecord::Schema.define(version: 20160905132429) do
     t.datetime "published_at"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.text     "tags",         limit: 65535
   end
 
 end
